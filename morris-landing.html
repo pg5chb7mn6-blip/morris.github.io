@@ -3,1115 +3,1443 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>제갈도윤 | 청호나이스 생활가전 전문 상담</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<title>청호나이스 공식 렌탈 상담 | 제갈도윤</title>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --navy: #0a1628;
-    --blue: #1a3a6b;
-    --accent: #2e7de9;
-    --light-blue: #e8f1fd;
-    --gold: #c9a84c;
+    --black: #0a0a0a;
+    --dark: #1a1a1a;
+    --gray-900: #2a2a2a;
+    --gray-700: #4a4a4a;
+    --gray-500: #8a8a8a;
+    --gray-300: #d4d4d4;
+    --gray-100: #f5f5f5;
     --white: #ffffff;
-    --gray: #f5f7fa;
-    --text: #1e2d45;
-    --text-light: #6b7c99;
+    --accent: #c8a063;
   }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
   html { scroll-behavior: smooth; }
 
   body {
-    font-family: 'Noto Sans KR', sans-serif;
-    color: var(--text);
+    font-family: 'Pretendard', -apple-system, sans-serif;
+    color: var(--black);
     background: var(--white);
     overflow-x: hidden;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
   }
 
-  /* ── HEADER ── */
   header {
     position: fixed;
     top: 0; left: 0; right: 0;
     z-index: 100;
-    background: rgba(10,22,40,0.97);
-    backdrop-filter: blur(10px);
-    padding: 16px 24px;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    padding: 18px 32px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    transition: all 0.3s;
   }
+
+  header.scrolled { background: rgba(255,255,255,0.95); padding: 14px 32px; }
 
   .logo {
-    font-family: 'Noto Serif KR', serif;
-    font-size: 22px;
-    font-weight: 700;
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--black);
+    letter-spacing: -0.3px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .logo-mark {
+    width: 28px; height: 28px;
+    background: var(--black);
     color: var(--white);
-    letter-spacing: -0.5px;
-  }
-
-  .logo span { color: var(--gold); }
-
-  nav a {
-    color: rgba(255,255,255,0.75);
-    text-decoration: none;
-    font-size: 14px;
-    margin-left: 28px;
-    font-weight: 400;
-    transition: color 0.2s;
-  }
-
-  nav a:hover { color: var(--white); }
-
-  .header-cta {
-    background: var(--accent);
-    color: var(--white) !important;
-    padding: 9px 20px;
-    border-radius: 6px;
-    font-weight: 500 !important;
-    font-size: 13px !important;
-    transition: background 0.2s !important;
-  }
-
-  .header-cta:hover { background: #1a6fd4 !important; }
-
-  /* ── HERO ── */
-  .hero {
-    min-height: 100vh;
-    background: linear-gradient(145deg, var(--navy) 0%, var(--blue) 60%, #1e4fa0 100%);
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    padding: 120px 24px 80px;
+    font-size: 11px;
+    font-weight: 900;
+  }
+
+  nav { display: flex; align-items: center; gap: 32px; }
+
+  nav a {
+    color: var(--gray-700);
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 500;
+    transition: color 0.2s;
+    letter-spacing: -0.2px;
+  }
+
+  nav a:hover { color: var(--black); }
+
+  .nav-cta {
+    background: var(--black);
+    color: var(--white) !important;
+    padding: 10px 22px;
+    border-radius: 30px;
+    font-weight: 600 !important;
+    font-size: 13px !important;
+    transition: all 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--gray-900); transform: translateY(-1px); }
+
+  .menu-btn { display: none; background: none; border: none; color: var(--black); font-size: 22px; cursor: pointer; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    padding: 140px 32px 80px;
     position: relative;
     overflow: hidden;
   }
 
-  .hero::before {
-    content: '';
-    position: absolute;
-    width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(46,125,233,0.2) 0%, transparent 70%);
-    top: -100px; right: -100px;
-    border-radius: 50%;
+  .hero-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 80px;
+    align-items: center;
   }
 
-  .hero::after {
-    content: '';
-    position: absolute;
-    width: 400px; height: 400px;
-    background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%);
-    bottom: 0; left: -50px;
-    border-radius: 50%;
-  }
-
-  .hero-inner { position: relative; z-index: 1; max-width: 720px; }
-
-  .hero-badge {
-    display: inline-block;
-    background: rgba(201,168,76,0.15);
-    border: 1px solid rgba(201,168,76,0.4);
-    color: var(--gold);
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
     font-size: 12px;
-    font-weight: 500;
-    padding: 6px 16px;
-    border-radius: 20px;
+    font-weight: 600;
+    color: var(--gray-700);
+    letter-spacing: 2px;
+    text-transform: uppercase;
     margin-bottom: 28px;
-    letter-spacing: 0.5px;
   }
+
+  .hero-eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--black); }
 
   .hero h1 {
-    font-family: 'Noto Serif KR', serif;
-    font-size: clamp(28px, 5vw, 48px);
-    font-weight: 700;
-    color: var(--white);
-    line-height: 1.35;
-    margin-bottom: 20px;
-    letter-spacing: -1px;
+    font-size: clamp(36px, 5.5vw, 64px);
+    font-weight: 800;
+    color: var(--black);
+    line-height: 1.15;
+    letter-spacing: -2px;
+    margin-bottom: 32px;
   }
 
-  .hero h1 em {
-    font-style: normal;
-    color: var(--gold);
+  .accent-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    color: var(--gray-700);
   }
 
-  .hero p {
-    font-size: clamp(15px, 2vw, 18px);
-    color: rgba(255,255,255,0.72);
-    line-height: 1.8;
+  .hero-desc {
+    font-size: 16px;
+    color: var(--gray-700);
+    line-height: 1.85;
     margin-bottom: 44px;
-    font-weight: 300;
+    max-width: 480px;
+    font-weight: 400;
   }
 
   .hero-btns {
     display: flex;
-    gap: 14px;
-    justify-content: center;
+    gap: 12px;
     flex-wrap: wrap;
+    margin-bottom: 56px;
   }
 
   .btn-primary {
-    background: var(--accent);
+    background: var(--black);
     color: var(--white);
-    padding: 16px 36px;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 500;
+    padding: 17px 32px;
+    border-radius: 50px;
+    font-size: 14.5px;
+    font-weight: 600;
     text-decoration: none;
     transition: all 0.25s;
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    box-shadow: 0 8px 24px rgba(46,125,233,0.35);
+    gap: 10px;
+    letter-spacing: -0.2px;
   }
 
   .btn-primary:hover {
-    background: #1a6fd4;
+    background: var(--gray-900);
     transform: translateY(-2px);
-    box-shadow: 0 12px 32px rgba(46,125,233,0.45);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.15);
   }
 
-  .btn-secondary {
+  .btn-primary .arrow { transition: transform 0.25s; }
+  .btn-primary:hover .arrow { transform: translateX(4px); }
+
+  .btn-line {
     background: transparent;
-    color: var(--white);
-    padding: 16px 36px;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 400;
+    color: var(--black);
+    padding: 17px 32px;
+    border-radius: 50px;
+    font-size: 14.5px;
+    font-weight: 600;
     text-decoration: none;
-    border: 1px solid rgba(255,255,255,0.3);
+    border: 1.5px solid var(--black);
     transition: all 0.25s;
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
   }
 
-  .btn-secondary:hover {
-    border-color: rgba(255,255,255,0.7);
-    background: rgba(255,255,255,0.08);
-  }
+  .btn-line:hover { background: var(--black); color: var(--white); }
 
-  .hero-stats {
-    margin-top: 64px;
-    display: flex;
-    justify-content: center;
-    gap: 48px;
-    flex-wrap: wrap;
-  }
-
-  .stat {
-    text-align: center;
-  }
-
-  .stat-num {
-    font-family: 'Noto Serif KR', serif;
-    font-size: 32px;
-    font-weight: 700;
-    color: var(--white);
-  }
-
-  .stat-num span { color: var(--gold); }
-
-  .stat-label {
-    font-size: 13px;
-    color: rgba(255,255,255,0.5);
-    margin-top: 4px;
-  }
-
-  /* ── SECTION COMMON ── */
-  section { padding: 80px 24px; }
-
-  .section-inner { max-width: 960px; margin: 0 auto; }
-
-  .section-tag {
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--accent);
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    margin-bottom: 12px;
-  }
-
-  .section-title {
-    font-family: 'Noto Serif KR', serif;
-    font-size: clamp(22px, 3.5vw, 34px);
-    font-weight: 700;
-    color: var(--text);
-    line-height: 1.4;
-    margin-bottom: 16px;
-    letter-spacing: -0.5px;
-  }
-
-  .section-sub {
-    font-size: 15px;
-    color: var(--text-light);
-    line-height: 1.8;
-    max-width: 560px;
-  }
-
-  /* ── ABOUT ── */
-  .about { background: var(--gray); }
-
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
-    align-items: center;
-    margin-top: 48px;
-  }
-
-  .about-card {
-    background: var(--white);
-    border-radius: 16px;
-    padding: 36px;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
-    border: 1px solid rgba(0,0,0,0.05);
-  }
-
-  .about-icon {
-    width: 52px; height: 52px;
-    background: var(--light-blue);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-
-  .about-card h3 {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 10px;
-  }
-
-  .about-card p {
-    font-size: 14px;
-    color: var(--text-light);
-    line-height: 1.8;
-  }
-
-  .about-profile {
-    background: linear-gradient(135deg, var(--navy), var(--blue));
-    border-radius: 16px;
-    padding: 40px;
-    color: var(--white);
-  }
-
-  .about-profile h3 {
-    font-family: 'Noto Serif KR', serif;
-    font-size: 22px;
-    font-weight: 700;
-    margin-bottom: 8px;
-    color: var(--white);
-  }
-
-  .about-profile .job {
-    font-size: 13px;
-    color: var(--gold);
-    margin-bottom: 20px;
-    font-weight: 500;
-  }
-
-  .about-profile p {
-    font-size: 14px;
-    color: rgba(255,255,255,0.75);
-    line-height: 1.9;
-    margin-bottom: 24px;
-  }
-
-  .profile-tags {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-
-  .profile-tag {
-    background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.2);
-    color: rgba(255,255,255,0.85);
-    font-size: 12px;
-    padding: 5px 12px;
-    border-radius: 20px;
-  }
-
-  /* ── PRODUCTS ── */
-  .products { background: var(--white); }
-
-  .products-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    margin-top: 48px;
-  }
-
-  .product-card {
-    border: 1.5px solid #e8edf5;
-    border-radius: 16px;
-    padding: 32px 28px;
-    transition: all 0.3s;
-    cursor: pointer;
+  .operator-card {
+    background: var(--gray-100);
+    border-radius: 24px;
+    padding: 44px 40px;
     position: relative;
     overflow: hidden;
   }
 
-  .product-card::before {
+  .operator-card::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--accent), var(--gold));
-    transform: scaleX(0);
-    transition: transform 0.3s;
-    transform-origin: left;
+    top: 0; right: 0;
+    width: 120px; height: 120px;
+    background: radial-gradient(circle, rgba(200,160,99,0.15), transparent 70%);
+    border-radius: 50%;
   }
 
-  .product-card:hover {
-    border-color: var(--accent);
-    box-shadow: 0 8px 32px rgba(46,125,233,0.12);
-    transform: translateY(-4px);
-  }
-
-  .product-card:hover::before { transform: scaleX(1); }
-
-  .product-emoji {
-    font-size: 36px;
-    margin-bottom: 16px;
-    display: block;
-  }
-
-  .product-card h3 {
-    font-size: 17px;
+  .operator-tag {
+    display: inline-block;
+    background: var(--black);
+    color: var(--white);
+    font-size: 11px;
     font-weight: 700;
-    color: var(--text);
-    margin-bottom: 8px;
-  }
-
-  .product-card p {
-    font-size: 13px;
-    color: var(--text-light);
-    line-height: 1.7;
-    margin-bottom: 20px;
-  }
-
-  .product-features {
-    list-style: none;
+    padding: 6px 14px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
     margin-bottom: 24px;
   }
 
-  .product-features li {
-    font-size: 13px;
-    color: var(--text-light);
-    padding: 4px 0;
+  .operator-name {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--black);
+    margin-bottom: 8px;
+    letter-spacing: -1.2px;
+  }
+
+  .operator-role {
+    font-size: 13.5px;
+    color: var(--gray-700);
+    margin-bottom: 28px;
+    font-weight: 500;
+  }
+
+  .operator-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+    background: var(--white);
+    border-radius: 16px;
+    padding: 24px 20px;
+    margin-bottom: 24px;
+  }
+
+  .stat-item { text-align: center; position: relative; }
+
+  .stat-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0; top: 20%;
+    width: 1px; height: 60%;
+    background: var(--gray-300);
+  }
+
+  .stat-num {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--black);
+    letter-spacing: -1px;
+  }
+
+  .stat-num .small { font-size: 14px; font-weight: 600; color: var(--gray-500); }
+
+  .stat-label {
+    font-size: 11px;
+    color: var(--gray-500);
+    margin-top: 4px;
+    font-weight: 500;
+  }
+
+  .operator-quote {
+    font-size: 14px;
+    color: var(--gray-700);
+    line-height: 1.75;
     padding-left: 16px;
+    border-left: 2px solid var(--black);
+    font-style: italic;
+  }
+
+  /* DIFFERENCE */
+  .difference {
+    background: var(--black);
+    color: var(--white);
+    padding: 120px 32px;
+  }
+
+  .diff-inner { max-width: 1280px; margin: 0 auto; }
+
+  .diff-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    margin-bottom: 80px;
+    align-items: end;
+  }
+
+  .section-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+    display: inline-block;
+  }
+
+  .section-title {
+    font-size: clamp(32px, 4.5vw, 52px);
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    line-height: 1.2;
+  }
+
+  .italic {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    color: var(--accent);
+  }
+
+  .diff-desc {
+    font-size: 16px;
+    color: var(--gray-300);
+    line-height: 1.85;
+    max-width: 480px;
+  }
+
+  .diff-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+
+  .diff-card {
+    border: 1px solid var(--gray-700);
+    border-radius: 20px;
+    padding: 40px 32px;
+    transition: all 0.3s;
+  }
+
+  .diff-card:hover { border-color: var(--accent); transform: translateY(-6px); }
+
+  .diff-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 500;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 24px;
+    font-style: italic;
+  }
+
+  .diff-card h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    letter-spacing: -0.5px;
+  }
+
+  .diff-card p {
+    font-size: 14px;
+    color: var(--gray-300);
+    line-height: 1.85;
+  }
+
+  /* PRODUCTS */
+  .products { background: var(--white); padding: 120px 32px; }
+
+  .products-inner { max-width: 1280px; margin: 0 auto; }
+
+  .products-header { text-align: center; margin-bottom: 80px; }
+
+  .products-header .section-eyebrow { color: var(--black); }
+
+  .products-header .section-title { color: var(--black); }
+
+  .products-header p {
+    font-size: 15px;
+    color: var(--gray-700);
+    margin-top: 20px;
+    line-height: 1.8;
+  }
+
+  .featured {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-bottom: 80px;
+  }
+
+  .featured-card {
+    background: var(--gray-100);
+    border-radius: 24px;
+    padding: 40px 32px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.35s;
+    cursor: pointer;
+  }
+
+  .featured-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(0,0,0,0.1); }
+
+  .featured-badge {
+    position: absolute;
+    top: 24px; right: 24px;
+    background: var(--black);
+    color: var(--white);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 12px;
+    letter-spacing: 0.5px;
+  }
+
+  .featured-icon {
+    width: 80px; height: 80px;
+    background: var(--white);
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    margin-bottom: 28px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  }
+
+  .featured-card h3 {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--black);
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+  }
+
+  .featured-sub {
+    font-size: 13px;
+    color: var(--gray-500);
+    margin-bottom: 24px;
+    font-weight: 500;
+  }
+
+  .featured-features { list-style: none; margin-bottom: 32px; }
+
+  .featured-features li {
+    font-size: 13.5px;
+    color: var(--gray-700);
+    padding: 6px 0;
+    padding-left: 20px;
     position: relative;
   }
 
-  .product-features li::before {
-    content: '✓';
+  .featured-features li::before {
+    content: '—';
     position: absolute;
     left: 0;
     color: var(--accent);
     font-weight: 700;
   }
 
-  .product-link {
-    font-size: 13px;
-    color: var(--accent);
+  .featured-price {
+    border-top: 1px solid var(--gray-300);
+    padding-top: 20px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
+  .price-label {
+    font-size: 11px;
+    color: var(--gray-500);
+    margin-bottom: 4px;
+    display: block;
     font-weight: 500;
+  }
+
+  .price-num {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--black);
+    letter-spacing: -0.5px;
+  }
+
+  .price-unit { font-size: 13px; color: var(--gray-500); font-weight: 500; }
+
+  .featured-link {
+    color: var(--black);
+    font-size: 13px;
+    font-weight: 600;
     text-decoration: none;
     display: inline-flex;
     align-items: center;
-    gap: 4px;
+    gap: 6px;
   }
 
-  .product-link:hover { text-decoration: underline; }
+  .all-products { border-top: 1px solid var(--gray-300); padding-top: 80px; }
 
-  /* ── PROCESS ── */
-  .process { background: var(--navy); }
+  .all-products-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
 
-  .process .section-title { color: var(--white); }
-  .process .section-tag { color: var(--gold); }
-  .process .section-sub { color: rgba(255,255,255,0.55); }
+  .all-products h2 {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--black);
+    letter-spacing: -0.8px;
+  }
+
+  .all-products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  .small-card {
+    background: var(--gray-100);
+    border-radius: 16px;
+    padding: 28px 24px;
+    transition: all 0.25s;
+    cursor: pointer;
+  }
+
+  .small-card:hover { background: var(--black); color: var(--white); }
+
+  .small-card:hover .small-cat { color: var(--accent); }
+
+  .small-icon {
+    font-size: 28px;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .small-cat {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--gray-500);
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    transition: color 0.25s;
+  }
+
+  .small-card h4 {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+  }
+
+  /* COMPARISON */
+  .comparison { background: var(--gray-100); padding: 120px 32px; }
+
+  .comparison-inner { max-width: 1100px; margin: 0 auto; }
+
+  .comparison-header { text-align: center; margin-bottom: 60px; }
+
+  .comparison-header .section-eyebrow { color: var(--black); }
+  .comparison-header .section-title { color: var(--black); }
+
+  .comparison-header p {
+    font-size: 15px;
+    color: var(--gray-700);
+    margin-top: 20px;
+    line-height: 1.8;
+  }
+
+  .comp-table {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 8px;
+    overflow-x: auto;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.04);
+  }
+
+  .comp-table table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+  }
+
+  .comp-table thead th {
+    background: var(--black);
+    color: var(--white);
+    font-size: 13.5px;
+    font-weight: 600;
+    padding: 18px 16px;
+    text-align: center;
+    letter-spacing: -0.2px;
+  }
+
+  .comp-table thead th:first-child { border-radius: 14px 0 0 0; text-align: left; padding-left: 24px; }
+  .comp-table thead th:last-child { border-radius: 0 14px 0 0; }
+
+  .comp-table thead th.highlight {
+    background: var(--accent);
+    color: var(--black);
+    font-weight: 800;
+  }
+
+  .comp-table tbody td {
+    padding: 18px 16px;
+    border-bottom: 1px solid var(--gray-100);
+    font-size: 14px;
+    color: var(--gray-700);
+    text-align: center;
+  }
+
+  .comp-table tbody td:first-child {
+    text-align: left;
+    padding-left: 24px;
+    font-weight: 600;
+    color: var(--black);
+  }
+
+  .comp-table tbody td.highlight {
+    background: rgba(200,160,99,0.08);
+    color: var(--black);
+    font-weight: 700;
+  }
+
+  .comp-table tbody tr:last-child td { border-bottom: none; }
+
+  .comp-note {
+    text-align: center;
+    font-size: 12px;
+    color: var(--gray-500);
+    margin-top: 20px;
+    line-height: 1.7;
+  }
+
+  /* GALLERY */
+  .gallery { background: var(--white); padding: 120px 32px; }
+
+  .gallery-inner { max-width: 1280px; margin: 0 auto; }
+
+  .gallery-header { text-align: center; margin-bottom: 60px; }
+
+  .gallery-header .section-eyebrow { color: var(--black); }
+  .gallery-header .section-title { color: var(--black); }
+
+  .gallery-header p { font-size: 15px; color: var(--gray-700); margin-top: 20px; }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .gallery-item {
+    aspect-ratio: 4/5;
+    background: var(--gray-100);
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+
+  .gallery-item:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.08); }
+
+  .gallery-placeholder { text-align: center; color: var(--gray-500); }
+
+  .gallery-placeholder .icon { font-size: 48px; margin-bottom: 12px; opacity: 0.4; }
+
+  .gallery-placeholder p { font-size: 13px; font-weight: 500; }
+
+  .gallery-overlay {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 24px;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    color: var(--white);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .gallery-item:hover .gallery-overlay { opacity: 1; }
+
+  .gallery-overlay h4 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+
+  .gallery-overlay p { font-size: 12px; opacity: 0.85; }
+
+  .gallery-cta { text-align: center; margin-top: 48px; }
+
+  /* PROCESS */
+  .process { background: var(--black); color: var(--white); padding: 120px 32px; }
+
+  .process-inner { max-width: 1100px; margin: 0 auto; }
+
+  .process-header { text-align: center; margin-bottom: 80px; }
 
   .process-steps {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 0;
-    margin-top: 56px;
-    position: relative;
+    gap: 24px;
   }
 
-  .process-steps::before {
-    content: '';
-    position: absolute;
-    top: 28px;
-    left: 12.5%;
-    right: 12.5%;
-    height: 1px;
-    background: rgba(255,255,255,0.15);
-  }
-
-  .step {
-    text-align: center;
-    padding: 0 16px;
-    position: relative;
-  }
+  .step { text-align: center; padding: 0 16px; }
 
   .step-num {
-    width: 56px; height: 56px;
-    background: var(--accent);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--white);
-    margin: 0 auto 20px;
-    position: relative;
-    z-index: 1;
-    font-family: 'Noto Serif KR', serif;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 64px;
+    font-weight: 500;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 20px;
+    font-style: italic;
   }
 
   .step h4 {
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--white);
-    margin-bottom: 8px;
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: -0.3px;
   }
 
-  .step p {
-    font-size: 13px;
-    color: rgba(255,255,255,0.5);
-    line-height: 1.7;
-  }
+  .step p { font-size: 13.5px; color: var(--gray-300); line-height: 1.75; }
 
-  /* ── FAQ ── */
-  .faq { background: var(--gray); }
+  /* FAQ */
+  .faq { background: var(--white); padding: 120px 32px; }
 
-  .faq-list {
-    margin-top: 48px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
+  .faq-inner { max-width: 880px; margin: 0 auto; }
+
+  .faq-header { text-align: center; margin-bottom: 60px; }
+
+  .faq-header .section-eyebrow { color: var(--black); }
+  .faq-header .section-title { color: var(--black); }
+
+  .faq-list { display: flex; flex-direction: column; gap: 12px; }
 
   .faq-item {
-    background: var(--white);
-    border-radius: 12px;
+    background: var(--gray-100);
+    border-radius: 16px;
     overflow: hidden;
-    border: 1px solid #e8edf5;
+    transition: all 0.2s;
   }
 
+  .faq-item.open { background: var(--black); color: var(--white); }
+
   .faq-q {
-    padding: 20px 24px;
-    font-size: 15px;
+    padding: 24px 28px;
+    font-size: 15.5px;
     font-weight: 600;
-    color: var(--text);
+    color: inherit;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: background 0.2s;
+    letter-spacing: -0.3px;
   }
-
-  .faq-q:hover { background: var(--gray); }
 
   .faq-q::after {
     content: '+';
-    font-size: 22px;
-    color: var(--accent);
+    font-size: 24px;
     font-weight: 300;
     transition: transform 0.3s;
     flex-shrink: 0;
-    margin-left: 12px;
+    margin-left: 16px;
   }
 
   .faq-item.open .faq-q::after { transform: rotate(45deg); }
 
   .faq-a {
-    display: none;
-    padding: 0 24px 20px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    padding: 0 28px;
     font-size: 14px;
-    color: var(--text-light);
+    color: var(--gray-300);
     line-height: 1.85;
-    border-top: 1px solid #f0f3f8;
-    padding-top: 16px;
   }
 
-  .faq-item.open .faq-a { display: block; }
+  .faq-item.open .faq-a { max-height: 400px; padding: 0 28px 24px; }
 
-  /* ── CONTACT ── */
-  .contact { background: var(--white); }
+  /* CTA */
+  .cta-section { background: var(--gray-100); padding: 120px 32px; text-align: center; }
 
-  .contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
-    margin-top: 48px;
-    align-items: start;
-  }
+  .cta-inner { max-width: 720px; margin: 0 auto; }
 
-  .contact-info h3 {
-    font-family: 'Noto Serif KR', serif;
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 16px;
-  }
+  .cta-inner .section-eyebrow { color: var(--black); }
 
-  .contact-info p {
-    font-size: 14px;
-    color: var(--text-light);
-    line-height: 1.85;
-    margin-bottom: 32px;
-  }
-
-  .contact-methods {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .contact-method {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding: 18px 20px;
-    border: 1.5px solid #e8edf5;
-    border-radius: 12px;
-    text-decoration: none;
-    transition: all 0.25s;
-  }
-
-  .contact-method:hover {
-    border-color: var(--accent);
-    box-shadow: 0 4px 16px rgba(46,125,233,0.1);
-  }
-
-  .method-icon {
-    width: 44px; height: 44px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    flex-shrink: 0;
-  }
-
-  .method-icon.kakao { background: #FEE500; }
-  .method-icon.naver { background: #03C75A; }
-  .method-icon.phone { background: var(--light-blue); }
-
-  .method-text strong {
-    display: block;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text);
-    margin-bottom: 2px;
-  }
-
-  .method-text span {
-    font-size: 12px;
-    color: var(--text-light);
-  }
-
-  .contact-form {
-    background: var(--gray);
-    border-radius: 16px;
-    padding: 36px;
-  }
-
-  .contact-form h3 {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--text);
+  .cta-inner h2 {
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 800;
+    color: var(--black);
+    letter-spacing: -1.5px;
+    line-height: 1.25;
     margin-bottom: 24px;
   }
 
-  .form-group {
-    margin-bottom: 16px;
+  .cta-inner h2 .italic { color: var(--gray-700); }
+
+  .cta-inner p {
+    font-size: 16px;
+    color: var(--gray-700);
+    line-height: 1.85;
+    margin-bottom: 44px;
   }
 
-  .form-group label {
-    display: block;
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--text);
-    margin-bottom: 6px;
+  .cta-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 
-  .form-group input,
-  .form-group select,
-  .form-group textarea {
-    width: 100%;
-    padding: 12px 14px;
-    border: 1.5px solid #e0e6f0;
-    border-radius: 8px;
-    font-size: 14px;
-    font-family: 'Noto Sans KR', sans-serif;
-    color: var(--text);
-    background: var(--white);
-    transition: border-color 0.2s;
-    outline: none;
-  }
-
-  .form-group input:focus,
-  .form-group select:focus,
-  .form-group textarea:focus {
-    border-color: var(--accent);
-  }
-
-  .form-group textarea { resize: vertical; min-height: 100px; }
-
-  .form-submit {
-    width: 100%;
-    background: var(--navy);
-    color: var(--white);
-    border: none;
-    padding: 15px;
-    border-radius: 8px;
-    font-size: 15px;
-    font-weight: 600;
-    font-family: 'Noto Sans KR', sans-serif;
-    cursor: pointer;
+  .btn-kakao {
+    background: #FEE500;
+    color: #3A1D1D;
+    padding: 17px 36px;
+    border-radius: 50px;
+    font-size: 14.5px;
+    font-weight: 700;
+    text-decoration: none;
     transition: all 0.25s;
-    margin-top: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
   }
 
-  .form-submit:hover {
-    background: var(--blue);
-    transform: translateY(-1px);
-    box-shadow: 0 6px 20px rgba(10,22,40,0.25);
+  .btn-kakao:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(254,229,0,0.4);
   }
 
-  /* ── FOOTER ── */
-  footer {
-    background: var(--navy);
-    padding: 40px 24px;
-    text-align: center;
+  /* FOOTER */
+  footer { background: var(--black); color: var(--gray-300); padding: 80px 32px 40px; }
+
+  .footer-inner { max-width: 1280px; margin: 0 auto; }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 60px;
+    padding-bottom: 60px;
+    border-bottom: 1px solid var(--gray-700);
   }
 
-  .footer-logo {
-    font-family: 'Noto Serif KR', serif;
-    font-size: 20px;
+  .footer-brand .logo { color: var(--white); font-size: 20px; margin-bottom: 20px; }
+
+  .footer-brand .logo-mark { background: var(--white); color: var(--black); }
+
+  .footer-brand p {
+    font-size: 13.5px;
+    line-height: 1.85;
+    color: var(--gray-300);
+    max-width: 380px;
+  }
+
+  .footer-col h5 {
+    font-size: 12px;
     font-weight: 700;
     color: var(--white);
-    margin-bottom: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
   }
 
-  .footer-logo span { color: var(--gold); }
-
-  footer p {
-    font-size: 13px;
-    color: rgba(255,255,255,0.4);
-    line-height: 1.8;
-  }
-
-  footer a {
-    color: rgba(255,255,255,0.55);
+  .footer-col a {
+    display: block;
+    font-size: 13.5px;
+    color: var(--gray-300);
     text-decoration: none;
+    padding: 6px 0;
+    transition: color 0.2s;
   }
 
-  footer a:hover { color: var(--white); }
+  .footer-col a:hover { color: var(--white); }
 
-  /* ── FLOATING BTN ── */
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: var(--gray-500);
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  /* FLOATING */
   .float-btn {
     position: fixed;
     bottom: 28px;
-    right: 24px;
+    right: 28px;
     background: #FEE500;
     color: #3A1D1D;
-    padding: 14px 22px;
+    padding: 16px 24px;
     border-radius: 50px;
     font-size: 14px;
     font-weight: 700;
     text-decoration: none;
-    box-shadow: 0 6px 24px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.2);
     display: flex;
     align-items: center;
     gap: 8px;
     z-index: 99;
     transition: all 0.25s;
-    animation: float 3s ease-in-out infinite;
   }
 
   .float-btn:hover {
     transform: translateY(-3px) scale(1.03);
-    box-shadow: 0 10px 32px rgba(0,0,0,0.25);
+    box-shadow: 0 12px 36px rgba(0,0,0,0.25);
   }
 
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-6px); }
+  @media (max-width: 1024px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 56px; }
+    .diff-header { grid-template-columns: 1fr; gap: 24px; }
+    .diff-grid { grid-template-columns: 1fr; gap: 16px; }
+    .featured { grid-template-columns: 1fr; }
+    .all-products-grid { grid-template-columns: repeat(2, 1fr); }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .process-steps { grid-template-columns: 1fr 1fr; gap: 48px; }
+    .footer-top { grid-template-columns: 1fr; gap: 40px; }
   }
 
-  /* ── RESPONSIVE ── */
-  @media (max-width: 768px) {
+  @media (max-width: 640px) {
+    header { padding: 14px 20px; }
     nav { display: none; }
-    .about-grid { grid-template-columns: 1fr; }
-    .products-grid { grid-template-columns: 1fr; }
-    .process-steps { grid-template-columns: 1fr 1fr; gap: 32px; }
-    .process-steps::before { display: none; }
-    .contact-grid { grid-template-columns: 1fr; }
-    .hero-stats { gap: 32px; }
-  }
-
-  @media (max-width: 480px) {
+    .menu-btn { display: block; }
+    section { padding: 80px 20px !important; }
+    .hero { padding: 120px 20px 60px !important; }
+    .operator-stats { grid-template-columns: 1fr; gap: 16px; }
+    .stat-item:not(:last-child)::after { display: none; }
+    .all-products-grid { grid-template-columns: 1fr 1fr; }
+    .gallery-grid { grid-template-columns: 1fr; }
     .process-steps { grid-template-columns: 1fr; }
-    .hero-btns { flex-direction: column; align-items: center; }
+    .float-btn { padding: 14px 20px; font-size: 13px; }
   }
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<header>
-  <div class="logo">제갈도윤<span>.</span></div>
+<header id="header">
+  <div class="logo">
+    <div class="logo-mark">청</div>
+    청호나이스 공식렌탈
+  </div>
   <nav>
-    <a href="#about">소개</a>
+    <a href="#operator">운영자</a>
     <a href="#products">제품안내</a>
-    <a href="#process">이용방법</a>
+    <a href="#comparison">렌탈료비교</a>
+    <a href="#gallery">설치사례</a>
     <a href="#faq">자주묻는질문</a>
-    <a href="#contact" class="header-cta">무료상담 신청</a>
+    <a href="https://open.kakao.com/o/suMB3nEh" target="_blank" class="nav-cta">상담 신청</a>
   </nav>
+  <button class="menu-btn">☰</button>
 </header>
 
-<!-- HERO -->
-<section class="hero">
+<section class="hero" id="operator">
   <div class="hero-inner">
-    <div class="hero-badge">✦ 청호나이스 계열 엔지니어링 재직자 직접 운영</div>
-    <h1>생활가전, 잘 선택하고<br><em>잘 관리하는 법</em>을 압니다</h1>
-    <p>정수기·공기청정기·제습기·비데·연수기 등<br>청호나이스 전 제품을 현장 경험 기반으로 솔직하게 안내해드립니다</p>
-    <div class="hero-btns">
-      <a href="#contact" class="btn-primary">📞 무료 상담 신청하기</a>
-      <a href="#products" class="btn-secondary">제품 둘러보기 →</a>
-    </div>
-    <div class="hero-stats">
-      <div class="stat">
-        <div class="stat-num">6<span>년차</span></div>
-        <div class="stat-label">나이스엔지니어링 재직</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">100<span>%</span></div>
-        <div class="stat-label">솔직한 정보 제공</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">24<span>h</span></div>
-        <div class="stat-label">이내 답변</div>
+    <div>
+      <div class="hero-eyebrow">청호나이스 공식 렌탈 상담</div>
+      <h1>
+        믿을 수 있는<br>
+        <span class="accent-text">렌탈 상담의 기준,</span><br>
+        제갈도윤입니다
+      </h1>
+      <p class="hero-desc">
+        나이스엔지니어링 6년차 현장 전문가가 직접 운영하는 청호나이스 공식 렌탈 상담 채널입니다. 광고가 아닌, 현장에서 쌓은 진짜 정보로 안내해드립니다.
+      </p>
+      <div class="hero-btns">
+        <a href="https://open.kakao.com/o/suMB3nEh" target="_blank" class="btn-primary">
+          상담 시작하기 <span class="arrow">→</span>
+        </a>
+        <a href="#products" class="btn-line">제품 둘러보기</a>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section class="about" id="about">
-  <div class="section-inner">
-    <div class="section-tag">ABOUT</div>
-    <div class="section-title">왜 제갈도윤에게 물어봐야 할까요?</div>
-    <div class="section-sub">인터넷에 넘쳐나는 광고성 정보 대신, 현장에서 직접 경험한 솔직한 이야기를 전합니다.</div>
-    <div class="about-grid">
-      <div>
-        <div class="about-profile">
-          <h3>제갈도윤</h3>
-          <div class="job">나이스엔지니어링 재직 6년차 · 청호나이스 계열사</div>
-          <p>저는 청호나이스 계열사인 나이스엔지니어링에서 근무하며 수백 건의 생활가전 설치·AS·렌탈 상담을 직접 경험했습니다. 그 경험을 바탕으로 소비자 입장에서 꼭 알아야 할 정보들을 솔직하게 공유합니다.</p>
-          <div class="profile-tags">
-            <span class="profile-tag">정수기 전문</span>
-            <span class="profile-tag">공기청정기</span>
-            <span class="profile-tag">제습기</span>
-            <span class="profile-tag">비데·연수기</span>
-            <span class="profile-tag">렌탈 컨설팅</span>
+    <div>
+      <div class="operator-card">
+        <span class="operator-tag">CERTIFIED OPERATOR</span>
+        <div class="operator-name">제갈도윤</div>
+        <div class="operator-role">나이스엔지니어링 재직 · 청호나이스 계열사</div>
+        <div class="operator-stats">
+          <div class="stat-item">
+            <div class="stat-num">6<span class="small">년차</span></div>
+            <div class="stat-label">현장 경력</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">2020<span class="small">.11</span></div>
+            <div class="stat-label">입사 연월</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">100<span class="small">%</span></div>
+            <div class="stat-label">정직한 상담</div>
           </div>
         </div>
-      </div>
-      <div style="display:flex; flex-direction:column; gap:16px;">
-        <div class="about-card">
-          <div class="about-icon">🔧</div>
-          <h3>현장 경험 기반 정보</h3>
-          <p>직접 설치하고 관리하며 쌓은 노하우로, 제품 설명서에 없는 실전 팁을 알려드립니다.</p>
-        </div>
-        <div class="about-card">
-          <div class="about-icon">💬</div>
-          <h3>1:1 맞춤 상담</h3>
-          <p>가족 구성원, 거주 환경, 예산에 맞는 최적의 제품과 렌탈 조건을 찾아드립니다.</p>
-        </div>
-        <div class="about-card">
-          <div class="about-icon">✅</div>
-          <h3>광고 없는 솔직한 리뷰</h3>
-          <p>체험단 제품은 명확히 표기하고, 단점도 솔직하게 이야기하는 신뢰할 수 있는 블로그입니다.</p>
-        </div>
+        <p class="operator-quote">
+          "광고로는 알 수 없는, 현장에서 직접 보고 겪은 정확한 정보를 전달하는 것이 제 일의 핵심입니다."
+        </p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PRODUCTS -->
+<section class="difference">
+  <div class="diff-inner">
+    <div class="diff-header">
+      <div>
+        <div class="section-eyebrow">WHY US</div>
+        <h2 class="section-title">
+          현장 전문가가<br>
+          <span class="italic">직접 안내합니다</span>
+        </h2>
+      </div>
+      <p class="diff-desc">
+        대형 콜센터의 일반 상담사와는 다릅니다. 6년간 현장에서 직접 설치하고 관리한 경험이 모든 상담의 기반이 됩니다.
+      </p>
+    </div>
+    <div class="diff-grid">
+      <div class="diff-card">
+        <div class="diff-num">01</div>
+        <h3>6년 현장 경력</h3>
+        <p>2020년 11월부터 나이스엔지니어링에서 청호나이스 제품을 직접 다뤄온 6년차 전문가입니다. 책에서는 배울 수 없는 실전 노하우를 제공합니다.</p>
+      </div>
+      <div class="diff-card">
+        <div class="diff-num">02</div>
+        <h3>청호나이스 계열사</h3>
+        <p>청호나이스 그룹사인 나이스엔지니어링 소속으로, 공식 채널과 동일한 신뢰성과 정확성을 보장합니다.</p>
+      </div>
+      <div class="diff-card">
+        <div class="diff-num">03</div>
+        <h3>광고 없는 솔직함</h3>
+        <p>판매 압박 없이, 고객 상황에 맞는 진짜 최선의 선택을 안내합니다. 필요하지 않은 제품은 권하지 않습니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="products" id="products">
-  <div class="section-inner">
-    <div class="section-tag">PRODUCTS</div>
-    <div class="section-title">렌탈·구매 상담 가능한 제품</div>
-    <div class="section-sub">청호나이스의 전 제품군에 대해 상담해드립니다. 어떤 제품이 우리 집에 맞는지 함께 찾아드릴게요.</div>
-    <div class="products-grid">
-      <div class="product-card">
-        <span class="product-emoji">💧</span>
-        <h3>정수기</h3>
-        <p>직수형부터 얼음정수기까지, 우리 가족에게 맞는 제품을 찾아드립니다.</p>
-        <ul class="product-features">
-          <li>직수형 / 저수조형 / 얼음정수기</li>
-          <li>냉온정수기 / 냉온얼음정수기</li>
-          <li>커피얼음정수기 (에스프레소)</li>
-          <li>약정·재렌탈 조건 비교 상담</li>
+  <div class="products-inner">
+    <div class="products-header">
+      <span class="section-eyebrow">SIGNATURE PRODUCTS</span>
+      <h2 class="section-title">대표 인기 제품 <span class="italic">Top 3</span></h2>
+      <p>청호나이스에서 가장 많이 선택받는 시그니처 정수기 라인업입니다.</p>
+    </div>
+
+    <div class="featured">
+      <div class="featured-card">
+        <span class="featured-badge">NEW</span>
+        <div class="featured-icon">💧</div>
+        <h3>The M</h3>
+        <div class="featured-sub">정수기 신제품 · 카운터탑 얼음정수기</div>
+        <ul class="featured-features">
+          <li>동급 모델 대비 부피 축소 콤팩트 설계</li>
+          <li>하루 6.7kg 안정적인 제빙 성능</li>
+          <li>자동 살균 · UV 케어 시스템</li>
+          <li>온수·냉수·정수·얼음 통합</li>
         </ul>
-        <a href="#contact" class="product-link">상담 신청하기 →</a>
+        <div class="featured-price">
+          <div>
+            <span class="price-label">월 렌탈료</span>
+            <span class="price-num">상담 후 안내</span>
+          </div>
+          <a href="https://open.kakao.com/o/suMB3nEh" target="_blank" class="featured-link">상담 →</a>
+        </div>
       </div>
-      <div class="product-card">
-        <span class="product-emoji">🌬️</span>
-        <h3>공기청정기</h3>
-        <p>평수와 환경에 맞는 용량 선택부터 필터 관리까지 안내해드립니다.</p>
-        <ul class="product-features">
-          <li>평수별 적정 용량 추천</li>
-          <li>서밋 타워 / 폭포 청정기 등</li>
-          <li>필터 교체 주기 및 관리</li>
-          <li>반려동물 가정 특화 상담</li>
+      <div class="featured-card">
+        <span class="featured-badge">AWARD</span>
+        <div class="featured-icon">🌬️</div>
+        <h3>서밋 타워</h3>
+        <div class="featured-sub">공기청정기 · 레드닷 디자인 수상</div>
+        <ul class="featured-features">
+          <li>독일 레드닷 디자인 어워드 수상</li>
+          <li>25평형 대용량 공기청정 커버</li>
+          <li>에어 리듬 모션 자동 순환 기술</li>
+          <li>AI 자동 운전 모드 탑재</li>
         </ul>
-        <a href="#contact" class="product-link">상담 신청하기 →</a>
+        <div class="featured-price">
+          <div>
+            <span class="price-label">월 렌탈료</span>
+            <span class="price-num">상담 후 안내</span>
+          </div>
+          <a href="https://open.kakao.com/o/suMB3nEh" target="_blank" class="featured-link">상담 →</a>
+        </div>
       </div>
-      <div class="product-card">
-        <span class="product-emoji">💨</span>
-        <h3>제습기</h3>
-        <p>장마·여름철 습도 관리, 적정 용량 선택과 전기세 절약법을 알려드립니다.</p>
-        <ul class="product-features">
-          <li>공간별 적정 용량 추천</li>
-          <li>전기세 절약 설정 팁</li>
-          <li>시즌 렌탈 상품 안내</li>
-          <li>에너지 효율 비교</li>
+      <div class="featured-card">
+        <span class="featured-badge">BEST</span>
+        <div class="featured-icon">🛏️</div>
+        <h3>듀얼드림 매트리스</h3>
+        <div class="featured-sub">청호 매트리스 · LK/K/Q/SS 사이즈</div>
+        <ul class="featured-features">
+          <li>듀얼 레이어 구조의 안락한 수면감</li>
+          <li>전 사이즈 선택 가능 (LK·K·Q·SS)</li>
+          <li>방문관리 서비스 포함</li>
+          <li>5~6년 의무약정 선택 가능</li>
         </ul>
-        <a href="#contact" class="product-link">상담 신청하기 →</a>
+        <div class="featured-price">
+          <div>
+            <span class="price-label">월 렌탈료</span>
+            <span class="price-num">23,900<span class="price-unit">원~</span></span>
+          </div>
+          <a href="https://open.kakao.com/o/suMB3nEh" target="_blank" class="featured-link">상담 →</a>
+        </div>
       </div>
-      <div class="product-card">
-        <span class="product-emoji">🚿</span>
-        <h3>비데</h3>
-        <p>위생과 편의를 모두 잡는 비데, 가정 환경에 맞는 제품을 추천해드립니다.</p>
-        <ul class="product-features">
-          <li>스마트 / 일반형 비데 비교</li>
-          <li>변기 규격 사전 확인</li>
-          <li>셀프 설치 vs 전문 설치</li>
-          <li>렌탈 월 요금 비교 안내</li>
-        </ul>
-        <a href="#contact" class="product-link">상담 신청하기 →</a>
+    </div>
+
+    <div class="all-products">
+      <div class="all-products-header">
+        <h2>청호나이스 전 제품 상담 가능</h2>
+        <a href="https://open.kakao.com/o/suMB3nEh" target="_blank" class="featured-link">전체 상담 →</a>
       </div>
-      <div class="product-card">
-        <span class="product-emoji">💧</span>
-        <h3>연수기</h3>
-        <p>세탁·피부·가전 수명까지 챙기는 연수기, 필요성부터 제품 선택까지 안내합니다.</p>
-        <ul class="product-features">
-          <li>가정용 / 사무용 구분 추천</li>
-          <li>연수기 효과 및 필요성 안내</li>
-          <li>설치 환경 사전 체크</li>
-          <li>렌탈 조건 상세 안내</li>
-        </ul>
-        <a href="#contact" class="product-link">상담 신청하기 →</a>
-      </div>
-      <div class="product-card">
-        <span class="product-emoji">🛋️</span>
-        <h3>안마의자 / 소파</h3>
-        <p>청호나이스 렌탈 가구 라인업, 합리적인 월 렌탈료로 부담 없이 사용하세요.</p>
-        <ul class="product-features">
-          <li>네스티지 모션소파 / 스윙소파</li>
-          <li>안마의자 렌탈 조건 안내</li>
-          <li>최대 5년 무상 AS 제공</li>
-          <li>월 렌탈료 비교 상담</li>
-        </ul>
-        <a href="#contact" class="product-link">상담 신청하기 →</a>
-      </div>
-      <div class="product-card">
-        <span class="product-emoji">❄️</span>
-        <h3>냉온수기</h3>
-        <p>사무실·가정용 냉온수기, 설치 환경과 사용 인원에 맞게 추천해드립니다.</p>
-        <ul class="product-features">
-          <li>스탠드형 / 벽걸이형 비교</li>
-          <li>사무실 인원수별 용량 추천</li>
-          <li>위생 관리 서비스 포함 여부</li>
-          <li>렌탈 vs 구매 비용 분석</li>
-        </ul>
-        <a href="#contact" class="product-link">상담 신청하기 →</a>
-      </div>
-      <div class="product-card">
-        <span class="product-emoji">🏠</span>
-        <h3>청호나이스 전 제품</h3>
-        <p>위 목록 외 청호나이스 제품도 모두 상담 가능합니다. 편하게 문의해 주세요.</p>
-        <ul class="product-features">
-          <li>신제품 출시 정보 안내</li>
-          <li>패키지 렌탈 할인 상담</li>
-          <li>기업·사무실 대량 렌탈</li>
-          <li>기존 계약 조건 검토</li>
-        </ul>
-        <a href="#contact" class="product-link">상담 신청하기 →</a>
-      </div>
-      <div class="product-card">
-        <span class="product-emoji">📋</span>
-        <h3>렌탈 컨설팅</h3>
-        <p>약정 만기·중도해지·재렌탈·소유권이전 등 복잡한 렌탈 문제를 도와드립니다.</p>
-        <ul class="product-features">
-          <li>약정 만기 후 선택지 분석</li>
-          <li>중도해지 위약금 계산</li>
-          <li>타사 보상 조건 검토</li>
-          <li>재렌탈 최적 시점 안내</li>
-        </ul>
-        <a href="#contact" class="product-link">상담 신청하기 →</a>
+      <div class="all-products-grid">
+        <div class="small-card">
+          <span class="small-icon">💧</span>
+          <div class="small-cat">PRODUCT</div>
+          <h4>정수기</h4>
+        </div>
+        <div class="small-card">
+          <span class="small-icon">🌬️</span>
+          <div class="small-cat">PRODUCT</div>
+          <h4>공기청정기</h4>
+        </div>
+        <div class="small-card">
+          <span class="small-icon">💨</span>
+          <div class="small-cat">PRODUCT</div>
+          <h4>제습기</h4>
+        </div>
+        <div class="small-card">
+          <span class="small-icon">🛏️</span>
+          <div class="small-cat">PRODUCT</div>
+          <h4>매트리스 · 프레임</h4>
+        </div>
+        <div class="small-card">
+          <span class="small-icon">🛋️</span>
+          <div class="small-cat">PRODUCT</div>
+          <h4>안마의자 · 소파</h4>
+        </div>
+        <div class="small-card">
+          <span class="small-icon">🚿</span>
+          <div class="small-cat">PRODUCT</div>
+          <h4>비데</h4>
+        </div>
+        <div class="small-card">
+          <span class="small-icon">💧</span>
+          <div class="small-cat">PRODUCT</div>
+          <h4>연수기</h4>
+        </div>
+        <div class="small-card">
+          <span class="small-icon">❄️</span>
+          <div class="small-cat">PRODUCT</div>
+          <h4>냉온수기</h4>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PROCESS -->
-<section class="process" id="process">
-  <div class="section-inner">
-    <div class="section-tag">HOW IT WORKS</div>
-    <div class="section-title">이렇게 진행됩니다</div>
-    <div class="section-sub">복잡하지 않아요. 4단계로 간단하게 최적의 제품을 찾아드립니다.</div>
+<section class="comparison" id="comparison">
+  <div class="comparison-inner">
+    <div class="comparison-header">
+      <span class="section-eyebrow">PRICE COMPARISON</span>
+      <h2 class="section-title">청호 vs 타사 <span class="italic">월 렌탈료 비교</span></h2>
+      <p>주요 렌탈 브랜드의 정수기 월 렌탈료를 비교해보세요.</p>
+    </div>
+    <div class="comp-table">
+      <table>
+        <thead>
+          <tr>
+            <th>구분</th>
+            <th class="highlight">청호나이스</th>
+            <th>코웨이</th>
+            <th>SK매직</th>
+            <th>쿠쿠</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>직수형 정수기</td>
+            <td class="highlight">23,900원~</td>
+            <td>26,900원~</td>
+            <td>25,900원~</td>
+            <td>24,900원~</td>
+          </tr>
+          <tr>
+            <td>냉온정수기</td>
+            <td class="highlight">29,900원~</td>
+            <td>31,900원~</td>
+            <td>30,900원~</td>
+            <td>28,900원~</td>
+          </tr>
+          <tr>
+            <td>얼음정수기</td>
+            <td class="highlight">39,900원~</td>
+            <td>43,900원~</td>
+            <td>42,900원~</td>
+            <td>39,900원~</td>
+          </tr>
+          <tr>
+            <td>관리 서비스</td>
+            <td class="highlight">포함</td>
+            <td>포함</td>
+            <td>포함</td>
+            <td>포함</td>
+          </tr>
+          <tr>
+            <td>약정 기간</td>
+            <td class="highlight">3~5년 선택</td>
+            <td>3~5년</td>
+            <td>3~5년</td>
+            <td>3~6년</td>
+          </tr>
+          <tr>
+            <td>제휴카드 할인</td>
+            <td class="highlight">최대 ▲19,000원</td>
+            <td>최대 ▲15,000원</td>
+            <td>최대 ▲13,000원</td>
+            <td>최대 ▲14,000원</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="comp-note">
+      * 2026년 5월 기준, 일반 모델 최저가 기준입니다. 실제 가격은 모델·약정 조건·프로모션에 따라 달라질 수 있습니다.<br>
+      * 정확한 견적은 상담을 통해 안내해드립니다.
+    </p>
+  </div>
+</section>
+
+<section class="gallery" id="gallery">
+  <div class="gallery-inner">
+    <div class="gallery-header">
+      <span class="section-eyebrow">INSTALLATION GALLERY</span>
+      <h2 class="section-title">실제 설치 사례 <span class="italic">갤러리</span></h2>
+      <p>현장에서 직접 설치한 실제 사례를 확인해보세요.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <div class="gallery-placeholder">
+          <div class="icon">📷</div>
+          <p>설치 사례 1</p>
+        </div>
+        <div class="gallery-overlay">
+          <h4>The M 정수기 설치</h4>
+          <p>아파트 4인 가족 · 주방 카운터탑</p>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder">
+          <div class="icon">📷</div>
+          <p>설치 사례 2</p>
+        </div>
+        <div class="gallery-overlay">
+          <h4>서밋 타워 공기청정기</h4>
+          <p>25평형 거실 · 신규 설치</p>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder">
+          <div class="icon">📷</div>
+          <p>설치 사례 3</p>
+        </div>
+        <div class="gallery-overlay">
+          <h4>듀얼드림 매트리스</h4>
+          <p>침실 Q사이즈 · 프레임 포함</p>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder">
+          <div class="icon">📷</div>
+          <p>설치 사례 4</p>
+        </div>
+        <div class="gallery-overlay">
+          <h4>비데 설치</h4>
+          <p>욕실 리모델링 후 신규 설치</p>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder">
+          <div class="icon">📷</div>
+          <p>설치 사례 5</p>
+        </div>
+        <div class="gallery-overlay">
+          <h4>제습기 설치</h4>
+          <p>거실 · 장마철 대비 사전 설치</p>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder">
+          <div class="icon">📷</div>
+          <p>설치 사례 6</p>
+        </div>
+        <div class="gallery-overlay">
+          <h4>안마의자 설치</h4>
+          <p>거실 · 모션 안마의자 신규 설치</p>
+        </div>
+      </div>
+    </div>
+    <div class="gallery-cta">
+      <a href="https://open.kakao.com/o/suMB3nEh" target="_blank" class="btn-line">
+        더 많은 설치 사례 문의하기 →
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="process">
+  <div class="process-inner">
+    <div class="process-header">
+      <span class="section-eyebrow">HOW IT WORKS</span>
+      <h2 class="section-title">상담 진행 <span class="italic">프로세스</span></h2>
+    </div>
     <div class="process-steps">
       <div class="step">
-        <div class="step-num">1</div>
-        <h4>상담 신청</h4>
-        <p>카카오톡 또는 블로그 댓글로 간단히 문의해주세요</p>
+        <div class="step-num">01</div>
+        <h4>카카오톡 문의</h4>
+        <p>오픈채팅으로 편하게 시작하세요</p>
       </div>
       <div class="step">
-        <div class="step-num">2</div>
+        <div class="step-num">02</div>
         <h4>환경 파악</h4>
-        <p>가족 수, 평수, 예산, 사용 목적을 함께 확인합니다</p>
+        <p>가족 수·평수·예산을 함께 확인합니다</p>
       </div>
       <div class="step">
-        <div class="step-num">3</div>
+        <div class="step-num">03</div>
         <h4>맞춤 추천</h4>
-        <p>현장 경험 기반으로 최적의 제품과 조건을 안내합니다</p>
+        <p>최적의 제품과 렌탈 조건을 안내합니다</p>
       </div>
       <div class="step">
-        <div class="step-num">4</div>
+        <div class="step-num">04</div>
         <h4>설치 완료</h4>
-        <p>계약부터 설치, 이후 관리까지 끝까지 챙겨드립니다</p>
+        <p>계약부터 설치까지 책임지고 진행합니다</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FAQ -->
 <section class="faq" id="faq">
-  <div class="section-inner">
-    <div class="section-tag">FAQ</div>
-    <div class="section-title">자주 묻는 질문</div>
-    <div class="section-sub">궁금하신 점을 먼저 확인해보세요.</div>
+  <div class="faq-inner">
+    <div class="faq-header">
+      <span class="section-eyebrow">FAQ</span>
+      <h2 class="section-title">자주 묻는 <span class="italic">질문</span></h2>
+    </div>
     <div class="faq-list">
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">정수기 약정 만기가 됐는데 어떻게 해야 하나요?</div>
-        <div class="faq-a">약정 만기와 계약 만기는 다릅니다. 약정 만기는 위약금 없이 해지 가능한 시점이고, 계약 만기는 소유권이 이전되는 시점이에요. 상황에 따라 재렌탈, 소유권 이전, 타사 이전 등 3가지 선택지가 있으며 각각 장단점이 있습니다. 개인 상황에 맞는 최적 선택을 상담해드릴게요.</div>
+        <div class="faq-a">약정 만기와 계약 만기는 다릅니다. 약정 만기는 위약금 없이 해지 가능한 시점이고, 계약 만기는 소유권이 이전되는 시점입니다. 상황에 따라 재렌탈, 소유권 이전, 타사 이전 등 3가지 선택지가 있으며 각각 장단점이 있습니다.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">렌탈이 좋은가요, 구매가 좋은가요?</div>
-        <div class="faq-a">단순히 비용만 보면 장기적으로 구매가 유리한 경우가 많지만, 이사 빈도, 관리 편의성, 초기 비용 부담, 최신 제품 선호도에 따라 답이 달라집니다. 1인 가구·신혼부부는 렌탈, 장기 거주 가족은 구매가 유리한 경향이 있어요. 상담을 통해 구체적인 비용을 계산해드립니다.</div>
+        <div class="faq-a">단순 비용만 보면 장기적으로 구매가 유리한 경우가 많지만, 이사 빈도·관리 편의성·초기 비용 부담·최신 제품 선호도에 따라 답이 달라집니다. 1인 가구·신혼부부는 렌탈, 장기 거주 가족은 구매가 유리한 경향이 있습니다.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">중도 해지하면 위약금이 얼마나 나오나요?</div>
-        <div class="faq-a">브랜드와 계약 조건에 따라 다르지만, 일반적으로 남은 약정 기간의 20~50% 수준의 위약금이 발생합니다. 타사에서 "위약금 대납"을 제안하는 경우도 있으니, 계약 전 반드시 세부 조건을 확인하시고, 의문사항은 상담해주세요.</div>
+        <div class="faq-a">브랜드와 계약 조건에 따라 다르지만, 일반적으로 남은 약정 기간의 20~50% 수준의 위약금이 발생합니다. 타사에서 위약금 대납을 제안하는 경우도 있으니, 계약 전 반드시 세부 조건을 확인하시기 바랍니다.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">공기청정기는 어떤 평수에 어떤 제품이 맞나요?</div>
-        <div class="faq-a">일반적으로 제품 권장 면적의 1.5~2배 평수 기준으로 선택하시면 여유 있게 쓸 수 있어요. 예를 들어 20평 거실이라면 30평형 이상 제품을 추천합니다. 반려동물 유무, 요리 빈도, 환기 가능 여부에 따라 필터 성능 기준도 달라지니 구체적인 상황을 알려주시면 맞춤 추천해드립니다.</div>
+        <div class="faq-a">일반적으로 제품 권장 면적의 1.5~2배 평수 기준으로 선택하시면 여유 있게 쓸 수 있습니다. 예를 들어 20평 거실이라면 30평형 이상 제품을 추천합니다. 반려동물 유무·요리 빈도·환기 가능 여부에 따라 필터 성능 기준도 달라집니다.</div>
       </div>
       <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">상담은 무료인가요?</div>
-        <div class="faq-a">네, 상담은 100% 무료입니다. 구매나 렌탈 계약을 강요하지 않으며, 솔직한 정보만 제공합니다. 카카오톡이나 블로그 댓글로 편하게 문의해주세요.</div>
+        <div class="faq-q" onclick="toggleFaq(this)">상담은 무료인가요? 비용이 발생하나요?</div>
+        <div class="faq-a">상담은 100% 무료입니다. 구매나 렌탈 계약을 강요하지 않으며, 솔직한 정보만 제공합니다. 카카오톡 오픈채팅으로 편하게 문의해주시면 됩니다.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">청호나이스 외 다른 브랜드 제품도 추천 가능한가요?</div>
+        <div class="faq-a">청호나이스 계열사 소속이므로 청호나이스 제품을 중심으로 안내드립니다. 다만 타사 제품과의 객관적인 비교 정보는 솔직하게 제공해드리니, 본인에게 맞는 최선의 선택을 하실 수 있도록 도와드립니다.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
-<section class="contact" id="contact">
-  <div class="section-inner">
-    <div class="section-tag">CONTACT</div>
-    <div class="section-title">무료 상담 신청</div>
-    <div class="contact-grid">
-      <div class="contact-info">
-        <h3>편하신 방법으로<br>연락주세요 😊</h3>
-        <p>렌탈 고민부터 제품 사용 팁까지, 궁금한 것은 무엇이든 물어봐 주세요. 아는 선에서 최대한 솔직하게 답변드립니다.</p>
-        <div class="contact-methods">
-          <a href="https://open.kakao.com/o/suMB3nEh" class="contact-method" target="_blank">
-            <div class="method-icon kakao">💬</div>
-            <div class="method-text">
-              <strong>카카오톡 오픈채팅</strong>
-              <span>[청호나이스] 공식렌탈 판매 상담</span>
-            </div>
-          </a>
-          <a href="https://m.blog.naver.com/moe-s" class="contact-method" target="_blank">
-            <div class="method-icon naver">N</div>
-            <div class="method-text">
-              <strong>네이버 블로그 댓글</strong>
-              <span>게시글 댓글로 문의 가능</span>
-            </div>
-          </a>
-          <a href="tel:010-8717-5749" class="contact-method">
-            <div class="method-icon phone">📱</div>
-            <div class="method-text">
-              <strong>전화 문의</strong>
-              <span>010-8717-5749 (평일 9-18시)</span>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="contact-form">
-        <h3>📋 빠른 상담 신청</h3>
-        <div class="form-group">
-          <label>이름</label>
-          <input type="text" placeholder="이름을 입력해주세요">
-        </div>
-        <div class="form-group">
-          <label>연락처</label>
-          <input type="tel" placeholder="010-0000-0000">
-        </div>
-        <div class="form-group">
-          <label>관심 제품</label>
-          <select>
-            <option value="">제품을 선택해주세요</option>
-            <option>정수기 (직수형/얼음/커피)</option>
-            <option>공기청정기</option>
-            <option>제습기</option>
-            <option>비데</option>
-            <option>연수기</option>
-            <option>냉온수기</option>
-            <option>안마의자 / 소파</option>
-            <option>렌탈 컨설팅 (약정/해지/재렌탈)</option>
-            <option>기타 청호나이스 제품</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>문의 내용</label>
-          <textarea placeholder="궁금하신 내용을 자유롭게 적어주세요"></textarea>
-        </div>
-        <button class="form-submit" onclick="submitForm()">무료 상담 신청하기 →</button>
-      </div>
+<section class="cta-section">
+  <div class="cta-inner">
+    <span class="section-eyebrow">CONSULTATION</span>
+    <h2>
+      지금 카카오톡으로<br>
+      <span class="italic">부담 없이 상담받으세요</span>
+    </h2>
+    <p>
+      견적 문의·제품 추천·약정 해지·재렌탈까지<br>
+      6년차 현장 전문가가 직접 답변드립니다.
+    </p>
+    <div class="cta-buttons">
+      <a href="https://open.kakao.com/o/suMB3nEh" target="_blank" class="btn-kakao">
+        💬 카카오톡으로 상담 시작
+      </a>
+      <a href="tel:010-8717-5749" class="btn-line">📞 010-8717-5749</a>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
-  <div class="footer-logo">제갈도윤<span>.</span></div>
-  <p>
-    나이스엔지니어링 재직 6년차 · 청호나이스 계열사<br>
-    <a href="https://m.blog.naver.com/moe-s" target="_blank">네이버 블로그</a> · 
-    본 페이지는 개인 운영 상담 페이지입니다<br><br>
-    © 2026 제갈도윤. All rights reserved.
-  </p>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">
+          <div class="logo-mark">청</div>
+          청호나이스 공식렌탈
+        </div>
+        <p>
+          나이스엔지니어링 6년차 제갈도윤이 직접 운영하는 청호나이스 공식 렌탈·판매 상담 채널입니다. 광고가 아닌 현장 경험을 바탕으로 정직한 안내를 드립니다.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h5>CONTACT</h5>
+        <a href="https://open.kakao.com/o/suMB3nEh" target="_blank">카카오 오픈채팅</a>
+        <a href="tel:010-8717-5749">010-8717-5749</a>
+        <a href="https://m.blog.naver.com/moe-s" target="_blank">네이버 블로그</a>
+      </div>
+      <div class="footer-col">
+        <h5>QUICK MENU</h5>
+        <a href="#operator">운영자 소개</a>
+        <a href="#products">제품 안내</a>
+        <a href="#comparison">렌탈료 비교</a>
+        <a href="#gallery">설치 사례</a>
+        <a href="#faq">자주 묻는 질문</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>운영자: 제갈도윤 · 나이스엔지니어링 재직 6년차 · 청호나이스 계열사</div>
+      <div>© 2026. All rights reserved.</div>
+    </div>
+  </div>
 </footer>
 
-<!-- FLOATING CTA -->
-<a href="#contact" class="float-btn">
-  💬 무료 상담하기
+<a href="https://open.kakao.com/o/suMB3nEh" target="_blank" class="float-btn">
+  💬 카카오 상담
 </a>
 
 <script>
@@ -1122,17 +1450,21 @@
     if (!isOpen) item.classList.add('open');
   }
 
-  function submitForm() {
-    alert('상담 신청이 완료됐습니다!\n빠른 시일 내에 연락드릴게요 😊\n\n카카오톡으로도 편하게 문의해주세요.');
-  }
+  window.addEventListener('scroll', () => {
+    const header = document.getElementById('header');
+    if (window.scrollY > 50) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
 
-  // Smooth scroll offset for fixed header
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       const target = document.querySelector(a.getAttribute('href'));
       if (target) {
         e.preventDefault();
-        window.scrollTo({ top: target.offsetTop - 72, behavior: 'smooth' });
+        window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
       }
     });
   });
